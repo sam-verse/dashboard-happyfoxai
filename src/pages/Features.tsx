@@ -339,12 +339,12 @@ const Features = () => {
 
                 {/* Low Adoption Features */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-red-600 dark:text-red-400">Low Adoption (&lt;40%)</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-red-600">Low Adoption (&lt;40%)</h3>
                   <div className="grid gap-3">
                     {featureMetrics
                       .filter(m => m.adoption_rate < 40)
                       .map(metric => (
-                        <div key={metric.feature.id} className="flex items-center justify-between p-3 border rounded-lg bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800">
+                        <div key={metric.feature.id} className="flex items-center justify-between p-3 border rounded-lg bg-red-50">
                           <div className="flex items-center gap-2">
                             {getServiceIcon(metric.feature.service_id)}
                             <span className="font-medium">{metric.feature.display_name}</span>
@@ -353,7 +353,7 @@ const Features = () => {
                             </Badge>
                           </div>
                           <div className="text-right">
-                            <div className="font-bold text-red-600 dark:text-red-400">{metric.adoption_rate}%</div>
+                            <div className="font-bold text-red-600">{metric.adoption_rate}%</div>
                             <div className="text-xs text-muted-foreground">{metric.total_users} users</div>
                           </div>
                         </div>
