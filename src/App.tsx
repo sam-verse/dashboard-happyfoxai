@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { KeyboardShortcuts } from "@/components/KeyboardShortcuts";
 import Index from "./pages/Index";
 import Organizations from "./pages/Organizations";
 import Services from "./pages/Services";
@@ -30,33 +31,38 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <SidebarProvider>
+            {/* Keyboard Shortcuts Handler */}
+            <KeyboardShortcuts />
+            
             <div className="min-h-screen flex w-full bg-background">
-              {/* Sidebar */}
+              {/* Enhanced Sidebar */}
               <AppSidebar />
               
-              {/* Main Content */}
-              <div className="flex-1 flex flex-col">
-                {/* Navbar */}
+              {/* Main Content Area with smooth transitions */}
+              <div className="flex-1 flex flex-col transition-all duration-300 ease-in-out">
+                {/* Enhanced Navbar */}
                 <Navbar 
                   onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   isMobileMenuOpen={isMobileMenuOpen}
                 />
                 
-                {/* Page Content */}
-                <main className="flex-1">
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/organizations" element={<Organizations />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/features" element={<Features />} />
-                    <Route path="/customers" element={<Customers />} />
-                    <Route path="/events" element={<Events />} />
-                    <Route path="/sessions" element={<Sessions />} />
-                    <Route path="/analytics" element={<Analytics />} />
-                    <Route path="/access" element={<AccessControl />} />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
+                {/* Page Content with better spacing */}
+                <main className="flex-1 overflow-auto bg-gradient-to-br from-background to-muted/20">
+                  <div className="h-full">
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/organizations" element={<Organizations />} />
+                      <Route path="/services" element={<Services />} />
+                      <Route path="/features" element={<Features />} />
+                      <Route path="/customers" element={<Customers />} />
+                      <Route path="/events" element={<Events />} />
+                      <Route path="/sessions" element={<Sessions />} />
+                      <Route path="/analytics" element={<Analytics />} />
+                      <Route path="/access" element={<AccessControl />} />
+                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </div>
                 </main>
               </div>
             </div>

@@ -115,7 +115,7 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild className="h-10">
                       <NavLink 
                         to={item.url} 
-                        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${getNavCls(active)}`}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 hover:scale-[1.02] ${getNavCls(active)}`}
                         title={item.title}
                       >
                         <item.icon className="h-5 w-5 flex-shrink-0" />
@@ -131,29 +131,30 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Quick Stats - Only show when expanded */}
+        {/* Enhanced Quick Stats - Only show when expanded */}
         {state !== 'collapsed' && (
           <SidebarGroup className="mt-8">
-            <SidebarGroupLabel className="px-3 mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            <SidebarGroupLabel className="px-3 mb-3 text-xs font-medium text-muted-foreground uppercase tracking-wider flex items-center gap-2">
+              <BarChart3 className="h-3 w-3" />
               Quick Stats
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <div className="px-3 space-y-3">
-                <div className="p-3 bg-gradient-subtle rounded-lg border border-border">
+                <div className="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/30 rounded-lg border border-border hover:shadow-sm transition-all duration-200 hover:scale-[1.02]">
                   <div className="text-sm font-medium text-foreground">Active Orgs</div>
-                  <div className="text-2xl font-bold text-primary">4</div>
-                  <div className="text-xs text-success">All services</div>
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">4</div>
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400">All services</div>
                 </div>
                 
-                <div className="p-3 bg-gradient-subtle rounded-lg border border-border">
+                <div className="p-3 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/30 rounded-lg border border-border hover:shadow-sm transition-all duration-200 hover:scale-[1.02]">
                   <div className="text-sm font-medium text-foreground">Today's Events</div>
-                  <div className="text-2xl font-bold text-accent-blue">1,247</div>
-                  <div className="text-xs text-success">+12% from yesterday</div>
+                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">1,247</div>
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400">+12% from yesterday</div>
                 </div>
 
-                <div className="p-3 bg-gradient-subtle rounded-lg border border-border">
+                <div className="p-3 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/50 dark:to-purple-900/30 rounded-lg border border-border hover:shadow-sm transition-all duration-200 hover:scale-[1.02]">
                   <div className="text-sm font-medium text-foreground">AI Usage</div>
-                  <div className="text-2xl font-bold text-purple-600">89</div>
+                  <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">89</div>
                   <div className="text-xs text-muted-foreground">Sessions today</div>
                 </div>
               </div>

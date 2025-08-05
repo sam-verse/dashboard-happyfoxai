@@ -47,9 +47,6 @@ export function Navbar({ onMobileMenuToggle, isMobileMenuOpen }: NavbarProps) {
           {/* Enhanced Sidebar Toggle for Desktop */}
           <CustomSidebarTrigger />
 
-          {/* Separator */}
-          <div className="hidden md:block h-6 w-px bg-border" />
-
           {/* Mobile Menu Toggle */}
           <Button
             variant="ghost"
@@ -64,18 +61,6 @@ export function Navbar({ onMobileMenuToggle, isMobileMenuOpen }: NavbarProps) {
               <Menu className="h-4 w-4" />
             )}
           </Button>
-
-          <div className="flex items-center gap-2">
-            <div
-              className={`flex h-8 w-8 items-center justify-center rounded-lg bg-background`}
-            >
-              <img src="/hf-mini.png" alt="HappyFox Logo" className="h-6 w-6" />
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold">Analytics</h1>
-              <p className="text-xs text-muted-foreground">Dashboard</p>
-            </div>
-          </div>
         </div>
 
         {/* Right Side Actions */}
