@@ -1,3 +1,4 @@
+import React from 'react';
 import { 
   BarChart3, 
   Building2, 
@@ -8,7 +9,8 @@ import {
   Layers,
   UserCheck,
   Zap,
-  PanelLeftClose
+  PanelLeftClose,
+  PanelLeft
 } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import {
@@ -21,6 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarHeader,
+  SidebarFooter,
   useSidebar,
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
@@ -56,15 +59,15 @@ export function AppSidebar() {
   return (
     <Sidebar 
       className={`border-r border-border bg-card transition-all duration-300 ${
-        state === 'collapsed' ? 'w-16' : 'w-64'
+        state === 'collapsed' ? 'w-[4.5rem]' : 'w-64'
       }`}
       collapsible="icon"
     >
       {/* Enhanced Header with Toggle */}
-      <SidebarHeader className="border-b border-border/50">
-        <div className="flex items-center justify-between px-2 py-2">
+      <SidebarHeader className="border-b border-border/50 p-0">
+        <div className="flex items-center justify-between h-16 px-4">
           {/* HappyFox Branding */}
-          <div className={`flex items-center gap-2 ${state === 'collapsed' ? 'justify-center' : ''}`}>
+          <div className={`flex items-center gap-2 ${state === 'collapsed' ? 'justify-center w-full' : ''}`}>
             <img src="/hf-mini.png" alt="HappyFox Logo" className="h-6 w-6 flex-shrink-0" />
             {state !== 'collapsed' && (
               <div className="flex flex-col">
@@ -115,7 +118,9 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild className="h-10">
                       <NavLink 
                         to={item.url} 
-                        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 hover:scale-[1.02] ${getNavCls(active)}`}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 hover:scale-[1.02] ${getNavCls(active)} ${
+                          state === 'collapsed' ? 'justify-center' : ''
+                        }`}
                         title={item.title}
                       >
                         <item.icon className="h-5 w-5 flex-shrink-0" />
@@ -127,6 +132,27 @@ export function AppSidebar() {
                   </SidebarMenuItem>
                 );
               })}
+              
+              {/* Separator - Only show when expanded */}
+              {state !== 'collapsed' && (
+                <div className="h-px bg-border/50 mx-3 my-2" />
+              )}
+              
+              {/* Collapse Sidebar Button - Only show when expanded */}
+              {state !== 'collapsed' && (
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className="h-10">
+                    <button
+                      onClick={toggleSidebar}
+                      className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 hover:scale-[1.02] text-muted-foreground hover:text-foreground hover:bg-accent/50 w-full"
+                      title="Toggle Sidebar"
+                    >
+                      <PanelLeftClose className="h-5 w-5 flex-shrink-0" />
+                      <span className="font-medium">Collapse Sidebar</span>
+                    </button>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -162,6 +188,31 @@ export function AppSidebar() {
           </SidebarGroup>
         )}
       </SidebarContent>
+
+      {/* Footer with Expand Button - Only show when collapsed */}
+      {state === 'collapsed' && (
+        <SidebarFooter className="p-0 border-t border-border/50">
+          <div className="flex justify-center py-4">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={toggleSidebar}
+                  className="h-10 w-10 hover:bg-accent/50 transition-all duration-200 hover:scale-105"
+                  aria-label="Expand sidebar"
+                >
+                  <PanelLeft className="h-5 w-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="text-xs">
+                <p>Expand sidebar</p>
+                <p className="text-muted-foreground">Ctrl/⌘ + B</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+        </SidebarFooter>
+      )}
     </Sidebar>
   );
 }
