@@ -7,7 +7,8 @@ import {
   Home, 
   Layers,
   UserCheck,
-  Zap
+  Zap,
+  PanelLeftClose
 } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 import {
@@ -19,8 +20,11 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarHeader,
   useSidebar,
 } from '@/components/ui/sidebar';
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const menuItems = [
   { title: 'Overview', url: '/', icon: Home },
@@ -35,7 +39,7 @@ const menuItems = [
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, toggleSidebar } = useSidebar();
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -56,16 +60,44 @@ export function AppSidebar() {
       }`}
       collapsible="icon"
     >
-      <SidebarContent className="px-2 py-4">
-        {/* HappyFox Branding */}
-        <div className={`px-3 mb-6 ${state === 'collapsed' ? 'hidden' : 'block'}`}>
-            <div className="flex items-center gap-2 text-primary font-bold text-lg">
-            <img src="/hf-mini.png" alt="HappyFox Logo" className="h-6 w-6" />
-            {/* <BarChart3 className="h-6 w-6" /> */}
-            <span>HappyFox Analytics</span>
-            </div>
-          <p className="text-xs text-muted-foreground mt-1">Product Usage Insights</p>
+      {/* Enhanced Header with Toggle */}
+      <SidebarHeader className="border-b border-border/50">
+        <div className="flex items-center justify-between px-2 py-2">
+          {/* HappyFox Branding */}
+          <div className={`flex items-center gap-2 ${state === 'collapsed' ? 'justify-center' : ''}`}>
+            <img src="/hf-mini.png" alt="HappyFox Logo" className="h-6 w-6 flex-shrink-0" />
+            {state !== 'collapsed' && (
+              <div className="flex flex-col">
+                <span className="text-primary font-bold text-sm">HappyFox Analytics</span>
+                <span className="text-xs text-muted-foreground">Product Insights</span>
+              </div>
+            )}
+          </div>
+          
+          {/* Collapse Toggle Button */}
+          {state !== 'collapsed' && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={toggleSidebar}
+                  className="h-8 w-8 hover:bg-accent/50 transition-all duration-200"
+                  aria-label="Collapse sidebar"
+                >
+                  <PanelLeftClose className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="text-xs">
+                <p>Collapse sidebar</p>
+                <p className="text-muted-foreground">Ctrl/⌘ + B</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
         </div>
+      </SidebarHeader>
+
+      <SidebarContent className="px-2 py-4">
 
         <SidebarGroup>
           <SidebarGroupLabel className={`px-3 mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider ${
