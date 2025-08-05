@@ -34,14 +34,14 @@ const Services = () => {
     <div className="flex-1 space-y-6 p-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Services</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Products</h1>
           <p className="text-muted-foreground">
-            Overview of all HappyFox services and their usage metrics
+            Overview of all HappyFox products and their usage metrics
           </p>
         </div>
         <Button>
           <Layers className="mr-2 h-4 w-4" />
-          Add Service
+          Add Products
         </Button>
       </div>
 
@@ -49,7 +49,7 @@ const Services = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Services</CardTitle>
+            <CardTitle className="text-sm font-medium">Total Products</CardTitle>
             <Layers className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -203,9 +203,9 @@ const Services = () => {
       {/* Service Comparison Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Service Comparison</CardTitle>
+          <CardTitle>Product Comparison</CardTitle>
           <CardDescription>
-            Side-by-side comparison of service performance metrics
+            Side-by-side comparison of product performance metrics
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -213,7 +213,7 @@ const Services = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-3">Service</th>
+                  <th className="text-left p-3">Products</th>
                   <th className="text-center p-3">Type</th>
                   <th className="text-center p-3">Users</th>
                   <th className="text-center p-3">Events</th>

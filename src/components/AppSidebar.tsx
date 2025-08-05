@@ -32,7 +32,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 const menuItems = [
   { title: 'Overview', url: '/', icon: Home },
   { title: 'Organizations', url: '/organizations', icon: Building2 },
-  { title: 'Services', url: '/services', icon: Layers },
+  { title: 'Products', url: '/services', icon: Layers },
   { title: 'Features', url: '/features', icon: Zap },
   { title: 'Customers', url: '/customers', icon: Users },
   { title: 'Events', url: '/events', icon: Activity },

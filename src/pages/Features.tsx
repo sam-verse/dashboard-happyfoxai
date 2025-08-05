@@ -138,7 +138,7 @@ const Features = () => {
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="by-service">By Service</TabsTrigger>
+          <TabsTrigger value="by-service">By Products</TabsTrigger>
           <TabsTrigger value="adoption">Adoption Analysis</TabsTrigger>
         </TabsList>
 
@@ -229,7 +229,7 @@ const Features = () => {
                   <CardTitle>{getServiceName(serviceId)}</CardTitle>
                 </div>
                 <CardDescription>
-                  {serviceFeatures.length} features in this service
+                  {serviceFeatures.length} features in this Products
                 </CardDescription>
               </CardHeader>
               <CardContent>

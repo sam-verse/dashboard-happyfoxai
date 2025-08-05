@@ -88,7 +88,7 @@ export const features: Feature[] = [
     id: 'feat-ai-chat',
     service_id: 'svc-ai-001',
     name: 'ai_chat',
-    display_name: 'AI Chat Assistant',
+    display_name: 'Ai-Writing Assistant',
     feature_type: 'core',
     min_plan: 'pro'
   },
@@ -96,7 +96,7 @@ export const features: Feature[] = [
     id: 'feat-ai-sentiment',
     service_id: 'svc-ai-001',
     name: 'sentiment_analysis',
-    display_name: 'Sentiment Analysis',
+    display_name: 'Ticket Summary',
     feature_type: 'premium',
     min_plan: 'enterprise'
   },
@@ -104,7 +104,7 @@ export const features: Feature[] = [
     id: 'feat-ai-autorespond',
     service_id: 'svc-ai-001',
     name: 'auto_response',
-    display_name: 'Auto Response Generator',
+    display_name: 'Ai Solution Agent',
     feature_type: 'premium',
     min_plan: 'pro'
   },
